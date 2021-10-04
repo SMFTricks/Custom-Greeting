@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>Nas:Custom_Greeting</id>
+	<name>Custom Greeting</name>
+	<version>3.0</version>
+	<type>modification</type>
+	<install for="2.1 - 2.1.99, 2.1 RC4">
+		<!-- Mod Readme -->
+		<readme lang="english" parsebbc="true" type="file">readme/readme.english.txt</readme>
+		<!-- Credits -->
+		<credits url="https://smftricks.com" license="Apache License 2.0" copyright="SMF Tricks" licenseurl="http://www.apache.org/licenses/LICENSE-2.0">Language Boards</credits>
+		<!-- License -->
+		<license type="inline" parsebbc="false">
+			This Source Code Form is subject to the terms of the Apache License, v2.0. 
+			If a copy of the Apache License was not distributed with this file,
+			You can obtain one at http://www.apache.org/licenses/LICENSE-2.0.
+		</license>
+		<!-- Theme Files -->
+		<require-dir name="languages/CustomGreeting" destination="$languagedir">Language files</require-dir>
+		<!-- Source File -->
+		<require-dir name="Sources" destination="$boarddir">Source file</require-dir>
+		<!-- Hooks -->
+		<hook hook="integrate_buffer" function="CustomGreeting::buffer" file="$sourcedir/CustomGreeting.php" />
+		<hook hook="integrate_general_mod_settings" function="CustomGreeting::settings" file="$sourcedir/CustomGreeting.php" />
+		<!-- Redirect -->
+		<redirect url="?action=admin;area=modsettings;">redirect.txt</redirect>
+	</install>
+	
+	<uninstall for="2.1 - 2.1.99, 2.1 RC4">
+		<!-- Hooks Remove -->
+		<hook hook="integrate_buffer" function="CustomGreeting::buffer" file="$sourcedir/CustomGreeting.php" reverse="true" />
+		<hook hook="integrate_general_mod_settings" function="CustomGreeting::settings" file="$sourcedir/CustomGreeting.php" reverse="true" />
+		<!-- Source File -->
+		<remove-file name="$sourcedir/CustomGreeting.php">Source file</remove-file>
+		<!-- Languages -->
+		<remove-dir name="$languagedir/CustomGreeting">Language files</remove-dir>
+	</uninstall>
+</package-info>

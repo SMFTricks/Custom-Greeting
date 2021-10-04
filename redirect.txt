@@ -1,0 +1,2 @@
+Custom Greeting has been successfully installed. 
+You will now be redirected to the settings page.
