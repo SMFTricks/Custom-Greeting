@@ -33,7 +33,7 @@ class CustomGreeting
 	public function __construct()
 	{
 		// Date
-		$this->_date = date('H', forum_time());
+		$this->_date = date('H', time());
 	}
 
 	/**
